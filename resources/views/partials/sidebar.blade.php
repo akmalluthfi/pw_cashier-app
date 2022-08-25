@@ -2,21 +2,21 @@
   <div class="position-sticky sidebar-sticky pt-3">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="./">
+        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="./">
           <span data-feather="home" class="align-text-bottom"></span>
           Dashboard
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file" class="align-text-bottom"></span>
-          Orders
+        <a class="nav-link {{ Request::is('items/*', 'items') ? 'active' : '' }}" href="./items">
+          <span data-feather="archive" class="align-text-bottom"></span>
+          Items
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="items.index.php">
+        <a class="nav-link" href="#">
           <span data-feather="shopping-cart" class="align-text-bottom"></span>
-          Items
+          Orders
         </a>
       </li>
       <li class="nav-item">

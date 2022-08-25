@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ItemController;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::resource('/items', ItemController::class);
