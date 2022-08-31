@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemRequest;
+use App\Models\Category;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -13,7 +16,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('items.index');
+        return view('items.index', [
+            'items' => Item::all(),
+        ]);
     }
 
     /**
@@ -23,62 +28,79 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('items.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ItemRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        Item::create($validated);
+
+        return redirect('/items')->with('success', 'Barang berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Item $item)
     {
-        //
+        return view('items.show', [
+            'item' => $item
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Item $item)
     {
-        //
+        return view('items.edit', [
+            'categories' => Category::all(),
+            'item' => $item
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\ItemRequest  $request
+     * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ItemRequest $request, Item $item)
     {
-        //
+        $validated = $request->validated();
+
+        Item::where('id', $item->id)->update($validated);
+
+        return redirect('/items')->with('success', 'Barang berhasil diperbarui!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Item $item)
     {
-        //
+        Item::destroy($item->id);
+
+        return redirect('/items')->with('success', 'Barang berhasil dihapus');
     }
 }

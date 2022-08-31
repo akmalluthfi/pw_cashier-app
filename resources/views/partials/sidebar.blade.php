@@ -2,13 +2,13 @@
   <div class="position-sticky sidebar-sticky pt-3">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="./">
+        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">
           <span data-feather="home" class="align-text-bottom"></span>
           Dashboard
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('items/*', 'items') ? 'active' : '' }}" href="./items">
+        <a class="nav-link {{ Request::is('items*') ? 'active' : '' }}" href="/items">
           <span data-feather="archive" class="align-text-bottom"></span>
           Items
         </a>
