@@ -38,7 +38,7 @@
         <label for="stock" class="form-label">Stok</label>
         <input type="number" class="form-control" id="stock" name="stock" value="{{ $item->stock }}" required>
       </div>
-      <button type="submit" class="btn btn-primary">Tambah Barang</button>
+      <button type="submit" class="btn btn-primary">Edit Barang</button>
     </form>
   </div>
     

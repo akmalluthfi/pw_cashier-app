@@ -10,25 +10,25 @@
       <li class="nav-item">
         <a class="nav-link {{ Request::is('items*') ? 'active' : '' }}" href="/items">
           <span data-feather="archive" class="align-text-bottom"></span>
-          Items
+          Barang
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('categories*') ? 'active' : '' }}" href="/categories">
+          <span data-feather="grid" class="align-text-bottom"></span>
+          Kategori
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <span data-feather="shopping-cart" class="align-text-bottom"></span>
-          Orders
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="users" class="align-text-bottom"></span>
-          Customers
+          Transaksi
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-          Reports
+          Laporan
         </a>
       </li>
       <li class="nav-item">
