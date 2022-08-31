@@ -22,4 +22,8 @@ Route::get('/', function () {
 });
 
 Route::resource('/items', ItemController::class);
-Route::resource('/categories', CategoryController::class);
+Route::resource('/categories', CategoryController::class)->except(['show', 'create', 'edit']);
+
+Route::fallback(function () {
+    abort(404);
+});

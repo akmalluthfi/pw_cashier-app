@@ -4,18 +4,20 @@
   <div class="pt-3 pb-2 mb-3 border-bottom">
     <h2>Data Kategori</h2>
   </div>
-
-  {{-- alert --}}
-  @if (session()->has('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      {{ session('success') }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  @endif
-
-  <a href="/categories/create" class="btn btn-success mb-3">Tambah Kategori</a>
   
   <div class="col-md-6">
+    {{-- alert --}}
+    @if (session()->has('success'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
+
+    <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
+      Tambah Kategori
+    </button>
+
     <table class="table table-striped table-hover">
       <thead class="table-dark">
         <tr>
@@ -32,7 +34,9 @@
             <td>{{ $category->name }}</td>
             <td>{{ date_format($category->created_at, "j M Y, H:i") }}</td>
             <td>
-              <a href="/categories/{{ $category->id }}/edit" class="btn badge text-bg-warning"><span data-feather="edit" class="align-text-bottom"></span></a>
+              <button type="button" class="btn badge text-bg-warning" data-bs-toggle="modal" data-bs-target="#editCategoryModal" onclick="addInputValue('{{ $category->name }}', '{{ $category->id }}')">
+                <span data-feather="edit" class="align-text-bottom"></span>
+              </button>
               <form action="/categories/{{ $category->id }}" method="POST" class="d-inline">
                 @csrf
                 @method('delete')
@@ -44,4 +48,8 @@
       </tbody>
     </table>
   </div>
+
+  @include('categories.modals.create')
+  @include('categories.modals.edit')
+
 @endsection
