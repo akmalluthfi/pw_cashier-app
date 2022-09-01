@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ItemController;
 use App\Models\Category;
 use GuzzleHttp\Psr7\Request;
@@ -23,9 +25,7 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::middleware('auth:members')->group(function () {
-    Route::get('/', function () {
-        return view('index');
-    });
+    Route::get('/', [GeneralController::class, 'index']);
     Route::resource('/items', ItemController::class);
     Route::resource('/categories', CategoryController::class)->except(['show', 'create', 'edit']);
 });
