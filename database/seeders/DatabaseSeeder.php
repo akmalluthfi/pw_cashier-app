@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Category;
+use App\Models\Member;
 use Illuminate\Database\Seeder;
 
 use function Termwind\ask;
@@ -27,7 +28,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CategorySeeder::class,
-            ItemSeeder::class
+            ItemSeeder::class,
+            MemberSeeder::class
         ]);
     }
 }

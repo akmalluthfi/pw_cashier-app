@@ -55,10 +55,13 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-danger" href="./logout.php">
-          <span data-feather="log-out" class="align-text-bottom text-danger"></span>
-          Keluar
-        </a>
+        <form action="/logout" method="post">
+          @csrf
+          <button type="submit" class="btn btn-link nav-link text-danger">
+            <span data-feather="log-out" class="align-text-bottom text-danger"></span>
+            Keluar
+          </button>
+        </form>
       </li>
     </ul>
   </div>

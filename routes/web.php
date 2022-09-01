@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Models\Category;
@@ -17,12 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest:members');
+Route::post('/login', [AuthController::class, 'authenticate']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
-Route::resource('/items', ItemController::class);
-Route::resource('/categories', CategoryController::class)->except(['show', 'create', 'edit']);
+Route::middleware('auth:members')->group(function () {
+    Route::get('/', function () {
+        return view('index');
+    });
+    Route::resource('/items', ItemController::class);
+    Route::resource('/categories', CategoryController::class)->except(['show', 'create', 'edit']);
+});
 
 Route::fallback(function () {
     abort(404);
