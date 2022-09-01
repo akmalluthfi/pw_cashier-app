@@ -7,6 +7,12 @@
           Dashboard
         </a>
       </li>
+    </ul>
+
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Master Data</span>
+    </h6>
+    <ul class="nav flex-column">
       <li class="nav-item">
         <a class="nav-link {{ Request::is('items*') ? 'active' : '' }}" href="/items">
           <span data-feather="archive" class="align-text-bottom"></span>
@@ -19,6 +25,11 @@
           Kategori
         </a>
       </li>
+    </ul>
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Transaksi</span>
+    </h6>
+    <ul class="nav flex-column">
       <li class="nav-item">
         <a class="nav-link" href="#">
           <span data-feather="shopping-cart" class="align-text-bottom"></span>
@@ -31,6 +42,12 @@
           Laporan
         </a>
       </li>
+    </ul>
+
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Setting</span>
+    </h6>
+    <ul class="nav flex-column">
       <li class="nav-item">
         <a class="nav-link" href="./profile.php">
           <span data-feather="user" class="align-text-bottom"></span>

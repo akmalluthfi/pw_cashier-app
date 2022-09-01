@@ -12,7 +12,7 @@
     </div>
     <div class="mb-3">
       <label for="name" class="form-label">Kategori</label>
-      <input type="text" class="form-control" value="{{ $item->category->name }}" readonly>
+      <input type="text" class="form-control" value="{{ $item->category->name ?? 'Kategori telah dihapus' }}" readonly>
     </div>
     <div class="mb-3">
       <label for="name" class="form-label">Merk</label>

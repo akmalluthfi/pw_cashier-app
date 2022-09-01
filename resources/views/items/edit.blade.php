@@ -4,7 +4,7 @@
   <div class="pt-3 pb-2 mb-3 border-bottom">
     <h2>Edit Barang</h2>
   </div>
-
+  <a href="/items" class="btn btn-primary mb-3">Kembali</a>
   <div class="col-md-8 mb-3">
     <form method="POST" action="/items/{{ $item->id }}">
       @csrf
@@ -17,9 +17,13 @@
         <label for="name" class="form-label">Kategori Barang</label>
         <select class="form-select" name="category_id" required>
           <option selected disabled>Silahkan Pilih Kategori</option>
-          @foreach ($categories as $category)
-            <option value="{{ $category->id }}" {{ $category->id == $item->category->id ? 'selected' : '' }}>{{ $category->name }}</option>
-          @endforeach
+            @foreach ($categories as $category)
+              @if ($item->category)
+                <option value="{{ $category->id }}" {{ $category->id == $item->category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+              @else
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+              @endif
+            @endforeach
         </select>
       </div>
       <div class="mb-3">

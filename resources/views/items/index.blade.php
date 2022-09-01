@@ -33,7 +33,7 @@
         <tr>
           <th scope="row">{{ $loop->iteration }}</th>
           <td>{{ $item->name }}</td>
-          <td>{{ $item->category->name }}</td>
+          <td>{{ $item->category->name ?? 'Katergori Telah Dihapus' }}</td>
           <td>{{ $item->brand}}</td>
           <td>{{ $item->purchase_price }}</td>
           <td>{{ $item->selling_price }}</td>
@@ -44,7 +44,7 @@
             <form action="/items/{{ $item->id }}" method="POST" class="d-inline">
               @csrf
               @method('delete')
-              <button class="btn badge text-bg-danger"><span data-feather="trash-2" class="align-text-bottom"></span></button>
+              <button class="btn badge text-bg-danger"><span data-feather="trash-2" class="align-text-bottom" onclick="return confirm('Apakah anda yakin mau menghapus barang?')"></span></button>
             </form>
           </td>
         </tr>
