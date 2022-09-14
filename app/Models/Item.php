@@ -15,4 +15,11 @@ class Item extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('name', 'like', "%$search%")
+            ->orWhere('brand', 'like', "%$search%")
+            ->orWhereRelation('category', 'name', 'like', "%$search%");
+    }
 }

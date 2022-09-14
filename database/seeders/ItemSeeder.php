@@ -15,7 +15,7 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $purchase_price = rand(1000, 10000);
             Item::create([
                 'category_id' => rand(1, 5),

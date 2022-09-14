@@ -2,11 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ItemController;
-use App\Models\Category;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
 /*

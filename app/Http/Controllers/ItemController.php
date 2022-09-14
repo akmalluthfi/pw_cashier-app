@@ -14,10 +14,15 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $items = Item::latest();
+        if ($request->query('k')) {
+            $items->search($request->query('k'));
+        }
+
         return view('items.index', [
-            'items' => Item::all(),
+            'items' => $items->paginate(10)->onEachSide(1),
         ]);
     }
 
